@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Furniture House Management System</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="index.html">
+                    <i class="fas fa-couch me-2"></i>
+                    <span>Furniture House</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="inventory.html">Categories</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="orders.html">
+                                Orders
+                                <span class="badge bg-primary rounded-pill ms-1" id="orderCountNav">0</span>
+                            </a>
+                        </li>
+                       
+                    </ul>
+                    <div class="d-flex gap-2 align-items-center">
+                        <!-- Cart Icon -->
+                        <a href="cart.html" class="btn btn-outline-secondary position-relative me-2" id="cartIconNav">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" id="cartCountNav">0</span>
+                        </a>
+                        <!-- Account Dropdown -->
+                        <div class="dropdown me-2">
+                            <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="accountDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user me-1"></i> Account
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="accountDropdown">
+                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                <li><a class="dropdown-item" href="#">Settings</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#">Logout</a></li>
+                            </ul>
+                        </div>
+                        <a href="login.html" class="btn btn-outline-primary">Login</a>
+                        <a href="signup.html" class="btn btn-primary">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero-section py-5 bg-light">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <h1 class="display-4 fw-bold mb-4">Transform Your Furniture Business</h1>
+                        <p class="lead mb-4">Streamline your operations, manage inventory, and grow your business with our comprehensive furniture management system.</p>
+                        <div class="d-flex gap-3">
+                            <a href="inventory.html" class="btn btn-primary btn-lg">Get Started</a>
+                            <a href="#features" class="btn btn-outline-primary btn-lg">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc" alt="Modern Furniture" class="img-fluid rounded shadow-lg">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Features -->
+        <section id="features" class="py-5">
+            <div class="container">
+                <h2 class="text-center mb-5">Key Features</h2>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="feature-card text-center p-4">
+                            <div class="feature-icon mb-3">
+                                <i class="fas fa-box fa-3x text-primary"></i>
+                            </div>
+                            <h3>Inventory Management</h3>
+                            <p>Track your furniture inventory in real-time with detailed product information and stock levels.</p>
+                            <a href="inventory.html" class="btn btn-link">Learn More →</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="feature-card text-center p-4">
+                            <div class="feature-icon mb-3">
+                                <i class="fas fa-shopping-cart fa-3x text-primary"></i>
+                            </div>
+                            <h3>Order Processing</h3>
+                            <p>Streamline your order management with automated processing and tracking systems.</p>
+                            <a href="orders.html" class="btn btn-link">Learn More →</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="feature-card text-center p-4">
+                            <div class="feature-icon mb-3">
+                                <i class="fas fa-chart-line fa-3x text-primary"></i>
+                            </div>
+                            <h3>Analytics & Reports</h3>
+                            <p>Make data-driven decisions with comprehensive reports and business analytics.</p>
+                            <a href="reports.html" class="btn btn-link">Learn More →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Choose Us -->
+        <section class="why-choose-us py-5 bg-light">
+            <div class="container">
+                <h2 class="text-center mb-5">Why Choose Us</h2>
+                <div class="row g-4">
+                    <div class="col-md-3">
+                        <div class="choose-card text-center p-4">
+                            <i class="fas fa-clock fa-2x text-primary mb-3"></i>
+                            <h4>Time-Saving</h4>
+                            <p>Automate routine tasks and save valuable time for your business.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="choose-card text-center p-4">
+                            <i class="fas fa-shield-alt fa-2x text-primary mb-3"></i>
+                            <h4>Secure & Reliable</h4>
+                            <p>Your data is protected with enterprise-grade security measures.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="choose-card text-center p-4">
+                            <i class="fas fa-headset fa-2x text-primary mb-3"></i>
+                            <h4>24/7 Support</h4>
+                            <p>Round-the-clock customer support to help you succeed.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="choose-card text-center p-4">
+                            <i class="fas fa-mobile-alt fa-2x text-primary mb-3"></i>
+                            <h4>Mobile Friendly</h4>
+                            <p>Access your business data from anywhere, anytime.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Overview -->
+        <section class="py-5">
+            <div class="container">
+                <h2 class="section-title mb-4">Dashboard Overview</h2>
+                <div class="row g-4 mb-4">
+                    <div class="col-md-3">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-box"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Total Products</h3>
+                                <p class="stat-number">1,234</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Active Orders</h3>
+                                <p class="stat-number">56</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Customers</h3>
+                                <p class="stat-number">789</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-dollar-sign"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>Revenue</h3>
+                                <p class="stat-number">$45,678</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Inventory -->
+                <h2 class="section-title mb-4">Recent Categories</h2>
+                
+                <!-- Category Filter -->
+                <div class="category-filter mb-4">
+                    <div class="row align-items-center">
+                        <div class="col-md-6">
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-primary active" data-category="all">All</button>
+                                <button class="btn btn-outline-primary" data-category="living">Living Room</button>
+                                <button class="btn btn-outline-primary" data-category="bedroom">Bedroom</button>
+                                <button class="btn btn-outline-primary" data-category="office">Office</button>
+                                <button class="btn btn-outline-primary" data-category="dining">Dining</button>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex justify-content-md-end mt-3 mt-md-0">
+                                <div class="input-group" style="max-width: 300px;">
+                                    <input type="text" class="form-control" placeholder="Search products...">
+                                    <button class="btn btn-primary">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row g-4" id="product-container">
+                    <!-- Living Room Product -->
+                    <div class="col-md-4" data-category="living">
+                        <div class="card h-100 product-card">
+                            <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc" class="card-img-top" alt="Modern Sofa">
+                            <div class="card-body">
+                                <h5 class="card-title">Modern Sofa</h5>
+                                <p class="card-text text-muted">Category: Living Room</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="price">₹899</span>
+                                    <span class="badge bg-success">In Stock</span>
+                                </div>
+                                <div class="mt-3 d-flex gap-2">
+                                    <a href="product-details.html?id=F001" class="btn btn-outline-primary flex-grow-1">View Details</a>
+                                    <button class="btn btn-primary flex-grow-1" onclick="addToCart('Modern Sofa', 899, 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc', 'Living Room')">
+                                        <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dining Room Product -->
+                    <div class="col-md-4" data-category="dining">
+                        <div class="card h-100 product-card">
+                            <img src="https://images.unsplash.com/photo-1577140917170-285929fb55b7" class="card-img-top" alt="Wooden Dining Table">
+                            <div class="card-body">
+                                <h5 class="card-title">Wooden Dining Table</h5>
+                                <p class="card-text text-muted">Category: Dining Room</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="price">₹599</span>
+                                    <span class="badge bg-success">In Stock</span>
+                                </div>
+                                <div class="mt-3 d-flex gap-2">
+                                    <a href="product-details.html?id=F002" class="btn btn-outline-primary flex-grow-1">View Details</a>
+                                    <button class="btn btn-primary flex-grow-1" onclick="addToCart('Wooden Dining Table', 599, 'https://images.unsplash.com/photo-1577140917170-285929fb55b7', 'Dining Room')">
+                                        <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bedroom Product -->
+                    <div class="col-md-4" data-category="bedroom">
+                        <div class="card h-100 product-card">
+                            <img src="https://images.unsplash.com/photo-1505693314120-0d443867891c" class="card-img-top" alt="Queen Size Bed">
+                            <div class="card-body">
+                                <h5 class="card-title">Queen Size Bed</h5>
+                                <p class="card-text text-muted">Category: Bedroom</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="price">₹1,299</span>
+                                    <span class="badge bg-warning">Low Stock</span>
+                                </div>
+                                <div class="mt-3 d-flex gap-2">
+                                    <a href="product-details.html?id=F003" class="btn btn-outline-primary flex-grow-1">View Details</a>
+                                    <button class="btn btn-primary flex-grow-1" onclick="addToCart('Queen Size Bed', 1299, 'https://images.unsplash.com/photo-1505693314120-0d443867891c', 'Bedroom')">
+                                        <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Office Product -->
+                    <div class="col-md-4" data-category="office">
+                        <div class="card h-100 product-card">
+                            <img src="https://images.unsplash.com/photo-1505693314120-0d443867891c" class="card-img-top" alt="Office Desk">
+                            <div class="card-body">
+                                <h5 class="card-title">Office Desk</h5>
+                                <p class="card-text text-muted">Category: Office</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="price">₹499</span>
+                                    <span class="badge bg-success">In Stock</span>
+                                </div>
+                                <div class="mt-3 d-flex gap-2">
+                                    <a href="product-details.html?id=F004" class="btn btn-outline-primary flex-grow-1">View Details</a>
+                                    <button class="btn btn-primary flex-grow-1" onclick="addToCart('Office Desk', 499, 'https://images.unsplash.com/photo-1505693314120-0d443867891c', 'Office')">
+                                        <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Explore More Button -->
+                <div class="text-center mt-5">
+                    <a href="all-products.html" class="btn btn-primary btn-lg">
+                        Explore More Products
+                        <i class="fas fa-arrow-right ms-2"></i>
+                    </a>
+                </div>
+
+                <!-- Add JavaScript for filtering -->
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        const filterButtons = document.querySelectorAll('.category-filter .btn');
+                        const productCards = document.querySelectorAll('.product-card').parentElement;
+
+                        filterButtons.forEach(button => {
+                            button.addEventListener('click', function() {
+                                // Remove active class from all buttons
+                                filterButtons.forEach(btn => btn.classList.remove('active'));
+                                // Add active class to clicked button
+                                this.classList.add('active');
+
+                                const category = this.getAttribute('data-category');
+
+                                productCards.forEach(card => {
+                                    if (category === 'all' || card.getAttribute('data-category') === category) {
+                                        card.style.display = 'block';
+                                    } else {
+                                        card.style.display = 'none';
+                                    }
+                                });
+                            });
+                        });
+                    });
+
+                    // Function to load more products
+                    function loadMoreProducts() {
+                        const productsContainer = document.querySelector('.row.g-4');
+                        const loadMoreBtn = document.getElementById('loadMoreBtn');
+                        
+                        // Additional products data
+                        const additionalProducts = [
+                            {
+                                id: 'F007',
+                                name: 'Modern TV Stand',
+                                price: 399,
+                                image: 'https://images.unsplash.com/photo-1615873968403-89e068629265',
+                                category: 'Living Room',
+                                stock: 12
+                            },
+                            {
+                                id: 'F008',
+                                name: 'Accent Chair',
+                                price: 299,
+                                image: 'https://images.unsplash.com/photo-1567538096630-e0c55bd6374c',
+                                category: 'Living Room',
+                                stock: 8
+                            },
+                            {
+                                id: 'F009',
+                                name: 'Study Desk',
+                                price: 249,
+                                image: 'https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd',
+                                category: 'Office',
+                                stock: 15
+                            },
+                            {
+                                id: 'F010',
+                                name: 'Dresser',
+                                price: 599,
+                                image: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36',
+                                category: 'Bedroom',
+                                stock: 10
+                            },
+                            {
+                                id: 'F011',
+                                name: 'Bar Stools',
+                                price: 199,
+                                image: 'https://images.unsplash.com/photo-1577140917170-285929fb55b7',
+                                category: 'Dining',
+                                stock: 20
+                            },
+                            {
+                                id: 'F012',
+                                name: 'Console Table',
+                                price: 349,
+                                image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc',
+                                category: 'Living Room',
+                                stock: 7
+                            }
+                        ];
+
+                        // Create and append new product cards
+                        additionalProducts.forEach(product => {
+                            const productCard = `
+                                <div class="col-md-4 mb-4" data-category="${product.category.toLowerCase()}">
+                                    <div class="card h-100 product-card">
+                                        <img src="${product.image}" class="card-img-top" alt="${product.name}">
+                                        <div class="card-body">
+                                            <h5 class="card-title">${product.name}</h5>
+                                            <p class="card-text text-muted">Category: ${product.category}</p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <span class="price">₹${product.price}</span>
+                                                <span class="badge bg-success">In Stock</span>
+                                            </div>
+                                            <div class="mt-3 d-flex gap-2">
+                                                <a href="product-details.html?id=${product.id}" class="btn btn-outline-primary flex-grow-1">View Details</a>
+                                                <button class="btn btn-primary flex-grow-1" onclick="addToCart('${product.name}', ${product.price}, '${product.image}', '${product.category}')">
+                                                    <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            `;
+                            productsContainer.insertAdjacentHTML('beforeend', productCard);
+                        });
+
+                        // Hide the load more button after loading all products
+                        loadMoreBtn.style.display = 'none';
+
+                        // Show success message
+                        showToast('More products loaded!', 'success');
+                    }
+                </script>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer mt-auto py-5 bg-dark text-white">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <h5 class="text-white mb-4">Furniture House</h5>
+                        <p class="text-muted">Your one-stop solution for all furniture management needs. We provide quality furniture and excellent service to make your space beautiful.</p>
+                        <div class="social-links mt-4">
+                            <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+                        <h5 class="text-white mb-4">Quick Links</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><a href="index.html" class="text-muted text-decoration-none">Home</a></li>
+                            <li class="mb-2"><a href="inventory.html" class="text-muted text-decoration-none">Inventory</a></li>
+                            <li class="mb-2"><a href="orders.html" class="text-muted text-decoration-none">Orders</a></li>
+                            <li class="mb-2"><a href="customers.html" class="text-muted text-decoration-none">Customers</a></li>
+                            <li><a href="reports.html" class="text-muted text-decoration-none">Reports</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-white mb-4">Contact Info</h5>
+                        <ul class="list-unstyled text-muted">
+                            <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> 123 Furniture Street, City, Country</li>
+                            <li class="mb-2"><i class="fas fa-phone me-2"></i> +1 234 567 8900</li>
+                            <li class="mb-2"><i class="fas fa-envelope me-2"></i> info@furniturehouse.com</li>
+                            <li><i class="fas fa-clock me-2"></i> Mon - Fri: 9:00 AM - 6:00 PM</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-white mb-4">Newsletter</h5>
+                        <p class="text-muted">Subscribe to our newsletter for updates and offers.</p>
+                        <form class="mt-3">
+                            <div class="input-group">
+                                <input type="email" class="form-control" placeholder="Enter your email">
+                                <button class="btn btn-primary" type="submit">Subscribe</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <hr class="my-4 bg-light">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start">
+                        <p class="mb-0 text-muted">&copy; 2024 Furniture House Management System. All rights reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <a href="#" class="text-muted text-decoration-none me-3">Privacy Policy</a>
+                        <a href="#" class="text-muted text-decoration-none me-3">Terms of Service</a>
+                        <a href="#" class="text-muted text-decoration-none">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+    <script>
+        function addToCart(name, price, image, category) {
+            // Get existing cart items from localStorage
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            
+            // Add new item to cart
+            cart.push({
+                name: name,
+                price: price,
+                image: image,
+                category: category,
+                quantity: 1
+            });
+            
+            // Save updated cart to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+            
+            // Update cart count in navbar
+            updateCartCount();
+            
+            // Show order modal
+            const orderModal = new bootstrap.Modal(document.getElementById('orderModal'));
+            orderModal.show();
+        }
+        
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartCount = document.getElementById('cartCountNav');
+            if (cartCount) {
+                cartCount.textContent = cart.length;
+            }
+        }
+        
+        // Initialize cart count on page load
+        document.addEventListener('DOMContentLoaded', updateCartCount);
+
+        // Navbar user logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const user = JSON.parse(localStorage.getItem('user'));
+            const accountDropdown = document.getElementById('accountDropdown');
+            const loginBtn = document.querySelector('a.btn.btn-outline-primary[href="login.html"]');
+            const signupBtn = document.querySelector('a.btn.btn-primary[href="signup.html"]');
+            if (user) {
+                // Show Account dropdown with user name
+                if (accountDropdown) {
+                    accountDropdown.innerHTML = `<i class='fas fa-user me-1'></i> ${user.firstName || ''} ${user.lastName || ''}`;
+                    accountDropdown.parentElement.style.display = 'block';
+                }
+                // Hide Login and Sign Up buttons
+                if (loginBtn) loginBtn.style.display = 'none';
+                if (signupBtn) signupBtn.style.display = 'none';
+            } else {
+                // Hide Account dropdown if not logged in
+                if (accountDropdown) accountDropdown.parentElement.style.display = 'none';
+                if (loginBtn) loginBtn.style.display = '';
+                if (signupBtn) signupBtn.style.display = '';
+            }
+        });
+
+        // Add event listeners for Account dropdown
+        document.addEventListener('DOMContentLoaded', function() {
+            // ... existing code ...
+            // Logout functionality
+            const logoutBtn = document.querySelector('.dropdown-menu .dropdown-item[href="#"][onclick], .dropdown-menu .dropdown-item[href="#logout"]');
+            const allLogoutBtns = document.querySelectorAll('.dropdown-menu .dropdown-item');
+            allLogoutBtns.forEach(function(btn) {
+                if (btn.textContent.trim().toLowerCase().includes('logout')) {
+                    btn.onclick = function(e) {
+                        e.preventDefault();
+                        localStorage.removeItem('user');
+                        window.location.href = 'index.html';
+                    };
+                }
+                if (btn.textContent.trim().toLowerCase().includes('profile')) {
+                    btn.setAttribute('data-bs-toggle', 'modal');
+                    btn.setAttribute('data-bs-target', '#profileModal');
+                    btn.onclick = function(e) {
+                        e.preventDefault();
+                        const user = JSON.parse(localStorage.getItem('user'));
+                        if (user) {
+                            document.getElementById('profileDetails').innerHTML = `
+                                <p><strong>Name:</strong> ${user.firstName || ''} ${user.lastName || ''}</p>
+                                <p><strong>Email:</strong> ${user.email || ''}</p>
+                                <p><strong>Phone:</strong> ${user.phone || ''}</p>
+                            `;
+                        }
+                    };
+                }
+            });
+        });
+
+        function placeOrder() {
+            const orderForm = document.getElementById('orderForm');
+            if (!orderForm.checkValidity()) {
+                orderForm.reportValidity();
+                return;
+            }
+
+            const orderDetails = {
+                id: 'ORD' + Date.now(),
+                customerName: document.getElementById('customerName').value,
+                customerEmail: document.getElementById('customerEmail').value,
+                customerPhone: document.getElementById('customerPhone').value,
+                shippingAddress: document.getElementById('shippingAddress').value,
+                paymentMethod: document.getElementById('paymentMethod').value,
+                orderDate: new Date().toISOString(),
+                status: 'Pending',
+                items: JSON.parse(localStorage.getItem('cart')) || []
+            };
+
+            // Get existing orders or initialize empty array
+            let orders = JSON.parse(localStorage.getItem('orders')) || [];
+            orders.push(orderDetails);
+            localStorage.setItem('orders', JSON.stringify(orders));
+
+            // Clear cart after order placement
+            localStorage.removeItem('cart');
+            updateCartCount();
+
+            // Update orders count
+            updateOrdersCount();
+
+            // Close modal and show success message
+            const orderModal = bootstrap.Modal.getInstance(document.getElementById('orderModal'));
+            orderModal.hide();
+            alert('Order placed successfully!');
+
+            // Reset form
+            orderForm.reset();
+        }
+
+        function updateOrdersCount() {
+            const orders = JSON.parse(localStorage.getItem('orders')) || [];
+            const orderCountNav = document.getElementById('orderCountNav');
+            if (orderCountNav) {
+                orderCountNav.textContent = orders.length;
+            }
+        }
+
+        // Initialize orders count on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            updateOrdersCount();
+            // ... existing DOMContentLoaded code ...
+        });
+    </script>
+
+    <!-- Add Profile Modal -->
+    <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="profileModalLabel">Profile Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="profileDetails">
+                    <!-- User details will be injected here -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Order Modal -->
+    <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="orderModalLabel">Place Order</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="orderForm">
+                        <div class="mb-3">
+                            <label for="customerName" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" id="customerName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="customerEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="customerEmail" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="customerPhone" class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control" id="customerPhone" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="shippingAddress" class="form-label">Shipping Address</label>
+                            <textarea class="form-control" id="shippingAddress" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="paymentMethod" class="form-label">Payment Method</label>
+                            <select class="form-select" id="paymentMethod" required>
+                                <option value="">Select payment method</option>
+                                <option value="credit">Credit Card</option>
+                                <option value="debit">Debit Card</option>
+                                <option value="upi">UPI</option>
+                                <option value="cod">Cash on Delivery</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="placeOrder()">Place Order</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

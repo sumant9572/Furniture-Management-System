@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Products - Furniture Store</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <i class="fas fa-couch me-2"></i>
+                <span>Furniture House</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="inventory.html">Categories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="orders.html">Orders</a>
+                    </li>
+                   
+                </ul>
+                <div class="d-flex gap-2">
+                    <a href="cart.html" class="btn btn-outline-primary position-relative">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="badge bg-primary rounded-pill position-absolute top-0 start-100 translate-middle"></span>
+                    </a>
+                    <a href="login.html" class="btn btn-outline-primary">Login</a>
+                    <a href="signup.html" class="btn btn-primary">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Products Section -->
+    <section class="py-5">
+        <div class="container">
+            <h1 class="mb-4">All Products</h1>
+
+            <!-- Filters and Search -->
+            <div class="row mb-4">
+                <div class="col-md-8">
+                    <div class="d-flex gap-2 flex-wrap">
+                        <button class="btn btn-primary active" data-category="all">All</button>
+                        <button class="btn btn-outline-primary" data-category="living">Living Room</button>
+                        <button class="btn btn-outline-primary" data-category="bedroom">Bedroom</button>
+                        <button class="btn btn-outline-primary" data-category="office">Office</button>
+                        <button class="btn btn-outline-primary" data-category="dining">Dining</button>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search products..." id="searchInput">
+                        <button class="btn btn-primary">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Price Range Filter -->
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <label class="form-label">Price Range</label>
+                    <div class="d-flex gap-2 align-items-center">
+                        <input type="number" class="form-control" placeholder="Min" id="minPrice">
+                        <span>-</span>
+                        <input type="number" class="form-control" placeholder="Max" id="maxPrice">
+                        <button class="btn btn-primary" onclick="filterByPrice()">Apply</button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Sort By</label>
+                    <select class="form-select" id="sortSelect" onchange="sortProducts()">
+                        <option value="default">Default</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="name-asc">Name: A to Z</option>
+                        <option value="name-desc">Name: Z to A</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="row g-4" id="productsGrid">
+                <!-- Products will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2024 Furniture Store. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="text-decoration-none me-3">Privacy Policy</a>
+                    <a href="#" class="text-decoration-none me-3">Terms of Service</a>
+                    <a href="#" class="text-decoration-none">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="product-data.js"></script>
+    <script>
+        // All products data
+        const allProducts = [
+            {
+                id: 'F001',
+                name: 'Modern Sofa',
+                price: 899,
+                image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc',
+                category: 'Living Room',
+                stock: 15
+            },
+            {
+                id: 'F002',
+                name: 'Wooden Dining Table',
+                price: 599,
+                image: 'https://images.unsplash.com/photo-1577140917170-285929fb55b7',
+                category: 'Dining',
+                stock: 10
+            },
+            {
+                id: 'F003',
+                name: 'Queen Size Bed',
+                price: 1299,
+                image: 'https://images.unsplash.com/photo-1505693314120-0d443867891c',
+                category: 'Bedroom',
+                stock: 8
+            },
+            {
+                id: 'F004',
+                name: 'Ergonomic Office Chair',
+                price: 349,
+                image: 'https://images.unsplash.com/photo-1567016432779-094069958ea5',
+                category: 'Office',
+                stock: 20
+            },
+            {
+                id: 'F005',
+                name: 'Modern Bookshelf',
+                price: 449,
+                image: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36',
+                category: 'Living Room',
+                stock: 12
+            },
+            {
+                id: 'F006',
+                name: 'Glass Coffee Table',
+                price: 299,
+                image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc',
+                category: 'Living Room',
+                stock: 15
+            },
+            {
+                id: 'F007',
+                name: 'Modern TV Stand',
+                price: 399,
+                image: 'https://images.unsplash.com/photo-1615873968403-89e068629265',
+                category: 'Living Room',
+                stock: 12
+            },
+            {
+                id: 'F008',
+                name: 'Accent Chair',
+                price: 299,
+                image: 'https://images.unsplash.com/photo-1567538096630-e0c55bd6374c',
+                category: 'Living Room',
+                stock: 8
+            },
+            {
+                id: 'F009',
+                name: 'Study Desk',
+                price: 249,
+                image: 'https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd',
+                category: 'Office',
+                stock: 15
+            },
+            {
+                id: 'F010',
+                name: 'Dresser',
+                price: 599,
+                image: 'https://images.unsplash.com/photo-1524758631624-e2822e304c36',
+                category: 'Bedroom',
+                stock: 10
+            },
+            {
+                id: 'F011',
+                name: 'Bar Stools',
+                price: 199,
+                image: 'https://images.unsplash.com/photo-1577140917170-285929fb55b7',
+                category: 'Dining',
+                stock: 20
+            },
+            {
+                id: 'F012',
+                name: 'Console Table',
+                price: 349,
+                image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc',
+                category: 'Living Room',
+                stock: 7
+            }
+        ];
+
+        // Function to create product card
+        function createProductCard(product) {
+            return `
+                <div class="col-md-4 mb-4" data-category="${product.category.toLowerCase()}">
+                    <div class="card h-100 product-card">
+                        <img src="${product.image}" class="card-img-top" alt="${product.name}">
+                        <div class="card-body">
+                            <h5 class="card-title">${product.name}</h5>
+                            <p class="card-text text-muted">Category: ${product.category}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="price">₹${product.price}</span>
+                                <span class="badge bg-success">In Stock</span>
+                            </div>
+                            <div class="mt-3 d-flex gap-2">
+                                <a href="product-details.html?id=${product.id}" class="btn btn-outline-primary flex-grow-1">View Details</a>
+                                <button class="btn btn-primary flex-grow-1" onclick="addToCart('${product.name}', ${product.price}, '${product.image}', '${product.category}')">
+                                    <i class="fas fa-shopping-cart me-2"></i>Add to Cart
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Function to load all products
+        function loadAllProducts() {
+            const productsGrid = document.getElementById('productsGrid');
+            productsGrid.innerHTML = allProducts.map(product => createProductCard(product)).join('');
+        }
+
+        // Function to filter products by category
+        function filterByCategory(category) {
+            const products = document.querySelectorAll('#productsGrid > div');
+            products.forEach(product => {
+                if (category === 'all' || product.getAttribute('data-category') === category.toLowerCase()) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        }
+
+        // Function to filter products by price
+        function filterByPrice() {
+            const minPrice = parseFloat(document.getElementById('minPrice').value) || 0;
+            const maxPrice = parseFloat(document.getElementById('maxPrice').value) || Infinity;
+            
+            const products = document.querySelectorAll('#productsGrid > div');
+            products.forEach(product => {
+                const price = parseFloat(product.querySelector('.price').textContent.replace('₹', ''));
+                if (price >= minPrice && price <= maxPrice) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        }
+
+        // Function to sort products
+        function sortProducts() {
+            const sortValue = document.getElementById('sortSelect').value;
+            const productsGrid = document.getElementById('productsGrid');
+            const products = Array.from(productsGrid.children);
+
+            products.sort((a, b) => {
+                const priceA = parseFloat(a.querySelector('.price').textContent.replace('₹', ''));
+                const priceB = parseFloat(b.querySelector('.price').textContent.replace('₹', ''));
+                const nameA = a.querySelector('.card-title').textContent;
+                const nameB = b.querySelector('.card-title').textContent;
+
+                switch(sortValue) {
+                    case 'price-low':
+                        return priceA - priceB;
+                    case 'price-high':
+                        return priceB - priceA;
+                    case 'name-asc':
+                        return nameA.localeCompare(nameB);
+                    case 'name-desc':
+                        return nameB.localeCompare(nameA);
+                    default:
+                        return 0;
+                }
+            });
+
+            products.forEach(product => productsGrid.appendChild(product));
+        }
+
+        // Function to search products
+        function searchProducts(query) {
+            const products = document.querySelectorAll('#productsGrid > div');
+            products.forEach(product => {
+                const name = product.querySelector('.card-title').textContent.toLowerCase();
+                const category = product.querySelector('.card-text').textContent.toLowerCase();
+                if (name.includes(query.toLowerCase()) || category.includes(query.toLowerCase())) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        }
+
+        // Add to Cart function
+        function addToCart(name, price, image, category) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            // Check if product already in cart
+            const index = cart.findIndex(item => item.name === name && item.category === category);
+            if (index > -1) {
+                cart[index].quantity += 1;
+            } else {
+                cart.push({ name, price, image, category, quantity: 1 });
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            alert('Item added to cart!');
+        }
+
+        // Update cart count in navbar
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartCount = document.querySelector('.btn.btn-outline-primary .badge');
+            if (cartCount) {
+                cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+            }
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadAllProducts();
+            updateCartCount();
+
+            // Add event listeners
+            document.querySelectorAll('[data-category]').forEach(button => {
+                button.addEventListener('click', function() {
+                    document.querySelectorAll('[data-category]').forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    filterByCategory(this.getAttribute('data-category'));
+                });
+            });
+
+            document.getElementById('searchInput').addEventListener('input', function() {
+                searchProducts(this.value);
+            });
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories - Furniture House Management System</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="index.html">
+                    <i class="fas fa-couch me-2"></i>
+                    <span>Furniture House</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="inventory.html">Categories</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="orders.html">Orders</a>
+                        </li>
+                        
+                    </ul>
+                    <div class="d-flex gap-2 align-items-center">
+                        <div class="dropdown me-3">
+                            <button class="btn btn-link text-dark position-relative" type="button" id="cartDropdown" data-bs-toggle="dropdown">
+                                <i class="fas fa-shopping-cart"></i>
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger cart-count">
+                                    0
+                                </span>
+                            </button>
+                            <div class="dropdown-menu dropdown-menu-end p-3" style="min-width: 300px;">
+                                <h6 class="dropdown-header">Shopping Cart</h6>
+                                <div class="cart-items">
+                                    <!-- Cart items will be dynamically added here -->
+                                    <div class="text-center text-muted py-3">Your cart is empty</div>
+                                </div>
+                                <div class="dropdown-divider"></div>
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span>Total:</span>
+                                    <span class="cart-total">₹0</span>
+                                </div>
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-primary">Checkout</button>
+                                    <button class="btn btn-outline-danger btn-sm clear-cart">Clear Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dropdown me-3">
+                            <button class="btn btn-link text-dark position-relative" type="button" id="accountDropdown">
+                                <i class="fas fa-user me-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="container py-5">
+            <!-- Page Header -->
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <h2 class="mb-0">Categories Management</h2>
+                    <p class="text-muted">Manage and view all your furniture products</p>
+                </div>
+               
+            </div>
+
+            <!-- Search and Filter Section -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search products...">
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex gap-2 justify-content-md-end">
+                                <select class="form-select" style="max-width: 200px;">
+                                    <option value="">All Categories</option>
+                                    <option value="living">Living Room</option>
+                                    <option value="bedroom">Bedroom</option>
+                                    <option value="dining">Dining</option>
+                                    <option value="office">Office</option>
+                                </select>
+                                <select class="form-select" style="max-width: 200px;">
+                                    <option value="">Sort By</option>
+                                    <option value="price-asc">Price: Low to High</option>
+                                    <option value="price-desc">Price: High to Low</option>
+                                    <option value="name-asc">Name: A to Z</option>
+                                    <option value="name-desc">Name: Z to A</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="row g-4">
+                <!-- Product Card 1 -->
+                <div class="col-md-4 col-lg-3">
+                    <div class="card product-card h-100">
+                        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc" class="card-img-top" alt="Modern Sofa">
+                        <div class="card-body">
+                            <h5 class="card-title">Modern Sofa</h5>
+                            <p class="card-text text-muted">Living Room</p>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="price">₹12,999</span>
+                                <span class="badge bg-success">In Stock</span>
+                            </div>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary add-to-cart" 
+                                    data-id="1"
+                                    data-name="Modern Sofa"
+                                    data-price="12999"
+                                    data-image="https://images.unsplash.com/photo-1555041469-a586c61ea9bc">
+                                    <i class="fas fa-cart-plus me-2"></i>Add to Cart
+                                </button>
+                                <button class="btn btn-outline-primary">
+                                    <i class="fas fa-eye me-2"></i>View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="col-md-4 col-lg-3">
+                    <div class="card product-card h-100">
+                        <img src="https://images.unsplash.com/photo-1577140917170-285929fb55b7" class="card-img-top" alt="Dining Table">
+                        <div class="card-body">
+                            <h5 class="card-title">Wooden Dining Table</h5>
+                            <p class="card-text text-muted">Dining</p>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="price">₹8,499</span>
+                                <span class="badge bg-warning">Low Stock</span>
+                            </div>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary add-to-cart"
+                                    data-id="2"
+                                    data-name="Wooden Dining Table"
+                                    data-price="8499"
+                                    data-image="https://images.unsplash.com/photo-1577140917170-285929fb55b7">
+                                    <i class="fas fa-cart-plus me-2"></i>Add to Cart
+                                </button>
+                                <button class="btn btn-outline-primary">
+                                    <i class="fas fa-eye me-2"></i>View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="col-md-4 col-lg-3">
+                    <div class="card product-card h-100">
+                        <img src="https://images.unsplash.com/photo-1505693314120-0d443867891c" class="card-img-top" alt="Queen Size Bed">
+                        <div class="card-body">
+                            <h5 class="card-title">Queen Size Bed</h5>
+                            <p class="card-text text-muted">Bedroom</p>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="price">₹15,999</span>
+                                <span class="badge bg-success">In Stock</span>
+                            </div>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary add-to-cart"
+                                    data-id="3"
+                                    data-name="Queen Size Bed"
+                                    data-price="15999"
+                                    data-image="https://images.unsplash.com/photo-1505693314120-0d443867891c">
+                                    <i class="fas fa-cart-plus me-2"></i>Add to Cart
+                                </button>
+                                <button class="btn btn-outline-primary">
+                                    <i class="fas fa-eye me-2"></i>View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Card 4 -->
+                <div class="col-md-4 col-lg-3">
+                    <div class="card product-card h-100">
+                        <img src="https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd" class="card-img-top" alt="Office Desk">
+                        <div class="card-body">
+                            <h5 class="card-title">Office Desk</h5>
+                            <p class="card-text text-muted">Office</p>
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <span class="price">₹6,999</span>
+                                <span class="badge bg-danger">Out of Stock</span>
+                            </div>
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-primary add-to-cart"
+                                    data-id="4"
+                                    data-name="Office Desk"
+                                    data-price="6999"
+                                    data-image="https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd">
+                                    <i class="fas fa-cart-plus me-2"></i>Add to Cart
+                                </button>
+                                <button class="btn btn-outline-primary">
+                                    <i class="fas fa-eye me-2"></i>View Details
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- More Product Cards... -->
+                <!-- Add more product cards here following the same structure -->
+            </div>
+
+            <!-- Pagination -->
+            <nav class="mt-5">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1">Previous</a>
+                    </li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer mt-auto py-3 bg-dark text-white">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start">
+                        <p class="mb-0">&copy; 2024 Furniture House Management System. All rights reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <a href="#" class="text-white text-decoration-none me-3">Privacy Policy</a>
+                        <a href="#" class="text-white text-decoration-none">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+
+    <!-- Navbar User Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const user = JSON.parse(localStorage.getItem('user'));
+            // Find Account dropdown, Login, and Sign Up buttons
+            const accountDropdown = document.getElementById('accountDropdown');
+            const loginBtn = document.querySelector('a.btn.btn-outline-primary[href="login.html"]');
+            const signupBtn = document.querySelector('a.btn.btn-primary[href="signup.html"]');
+            if (user) {
+                // Show Account dropdown with user name
+                if (accountDropdown) {
+                    accountDropdown.innerHTML = `<i class='fas fa-user me-1'></i> ${user.firstName || ''} ${user.lastName || ''}`;
+                    accountDropdown.parentElement.style.display = 'block';
+                }
+                // Hide Login and Sign Up buttons
+                if (loginBtn) loginBtn.style.display = 'none';
+                if (signupBtn) signupBtn.style.display = 'none';
+            } else {
+                // Hide Account dropdown if not logged in
+                if (accountDropdown) accountDropdown.parentElement.style.display = 'none';
+                if (loginBtn) loginBtn.style.display = '';
+                if (signupBtn) signupBtn.style.display = '';
+            }
+        });
+    </script>
+</body>
+</html> 

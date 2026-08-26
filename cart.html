@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - Furniture House</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="index.html">
+                    <i class="fas fa-couch me-2"></i>
+                    <span>Furniture House</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="inventory.html">Inventory</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="orders.html">Orders</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="customers.html">Customers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="reports.html">Reports</a>
+                        </li>
+                    </ul>
+                    <div class="d-flex gap-2 align-items-center">
+                        <a href="cart.html" class="btn btn-outline-primary position-relative">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                3
+                            </span>
+                        </a>
+                        <a href="login.html" class="btn btn-outline-primary">Login</a>
+                        <a href="signup.html" class="btn btn-primary">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Cart Section -->
+        <section class="py-5">
+            <div class="container">
+                <h2 class="section-title mb-4">Shopping Cart</h2>
+                
+                <div class="row">
+                    <div class="col-lg-8">
+                        <!-- Cart Items -->
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="cart-items">
+                                    <!-- Cart items will be dynamically populated here -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Continue Shopping -->
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a href="index.html" class="btn btn-outline-primary">
+                                <i class="fas fa-arrow-left me-2"></i>Continue Shopping
+                            </a>
+                            <button class="btn btn-outline-danger" onclick="clearCart()">
+                                <i class="fas fa-trash me-2"></i>Clear Cart
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Order Summary -->
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title mb-4">Order Summary</h5>
+                                <div class="order-items"></div>
+                                <div class="order-totals">
+                                    <!-- Order totals will be dynamically populated here -->
+                                </div>
+                                <button class="btn btn-primary w-100" onclick="proceedToCheckout()">
+                                    Proceed to Checkout
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Promo Code -->
+                        <div class="card mt-4">
+                            <div class="card-body">
+                                <h5 class="card-title mb-3">Promo Code</h5>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Enter promo code">
+                                    <button class="btn btn-outline-primary">Apply</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer mt-auto py-5 bg-dark text-white">
+            <div class="container">
+                <div class="row g-4">
+                    <div class="col-lg-4 col-md-6">
+                        <h5 class="text-white mb-4">Furniture House</h5>
+                        <p class="text-muted">Your one-stop solution for all furniture management needs. We provide quality furniture and excellent service to make your space beautiful.</p>
+                        <div class="social-links mt-4">
+                            <a href="#" class="text-white me-3"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="text-white me-3"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-white me-3"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6">
+                        <h5 class="text-white mb-4">Quick Links</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><a href="index.html" class="text-muted text-decoration-none">Home</a></li>
+                            <li class="mb-2"><a href="inventory.html" class="text-muted text-decoration-none">Inventory</a></li>
+                            <li class="mb-2"><a href="orders.html" class="text-muted text-decoration-none">Orders</a></li>
+                            <li class="mb-2"><a href="customers.html" class="text-muted text-decoration-none">Customers</a></li>
+                            <li><a href="reports.html" class="text-muted text-decoration-none">Reports</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-white mb-4">Contact Info</h5>
+                        <ul class="list-unstyled text-muted">
+                            <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> 123 Furniture Street, City, Country</li>
+                            <li class="mb-2"><i class="fas fa-phone me-2"></i> +1 234 567 8900</li>
+                            <li class="mb-2"><i class="fas fa-envelope me-2"></i> info@furniturehouse.com</li>
+                            <li><i class="fas fa-clock me-2"></i> Mon - Fri: 9:00 AM - 6:00 PM</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 col-md-6">
+                        <h5 class="text-white mb-4">Newsletter</h5>
+                        <p class="text-muted">Subscribe to our newsletter for updates and offers.</p>
+                        <form class="mt-3">
+                            <div class="input-group">
+                                <input type="email" class="form-control" placeholder="Enter your email">
+                                <button class="btn btn-primary" type="submit">Subscribe</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <hr class="my-4 bg-light">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start">
+                        <p class="mb-0 text-muted">&copy; 2024 Furniture House Management System. All rights reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <a href="#" class="text-muted text-decoration-none me-3">Privacy Policy</a>
+                        <a href="#" class="text-muted text-decoration-none me-3">Terms of Service</a>
+                        <a href="#" class="text-muted text-decoration-none">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Cart JavaScript -->
+    <script>
+        // Load cart items from localStorage
+        function loadCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartItemsContainer = document.querySelector('.cart-items');
+            const orderItemsContainer = document.querySelector('.order-items');
+            let subtotal = 0;
+
+            // Clear existing items
+            cartItemsContainer.innerHTML = '';
+            orderItemsContainer.innerHTML = '';
+
+            // Add each item to the cart
+            cart.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                subtotal += itemTotal;
+
+                // Add to cart items
+                cartItemsContainer.innerHTML += `
+                    <div class="cart-item d-flex align-items-center py-3 ${index < cart.length - 1 ? 'border-bottom' : ''}" data-index="${index}">
+                        <img src="${item.image}" alt="${item.name}" class="cart-item-img" style="width: 100px; height: 100px; object-fit: cover;">
+                        <div class="cart-item-details flex-grow-1 ms-3">
+                            <h5 class="mb-1">${item.name}</h5>
+                            <p class="text-muted mb-0">Category: ${item.category}</p>
+                            <div class="d-flex align-items-center mt-2">
+                                <div class="quantity-controls d-flex align-items-center me-3">
+                                    <button class="btn btn-sm btn-outline-secondary" onclick="updateQuantity(${index}, -1)">-</button>
+                                    <input type="number" class="form-control form-control-sm mx-2" value="${item.quantity}" min="1" style="width: 60px;" onchange="updateQuantity(${index}, 0, this.value)">
+                                    <button class="btn btn-sm btn-outline-secondary" onclick="updateQuantity(${index}, 1)">+</button>
+                                </div>
+                                <button class="btn btn-sm btn-outline-danger" onclick="removeItem(${index})">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="cart-item-price text-end ms-3">
+                            <h5 class="mb-0">₹${itemTotal}</h5>
+                            <p class="text-muted mb-0">₹${item.price} each</p>
+                        </div>
+                    </div>
+                `;
+
+                // Add to order summary
+                orderItemsContainer.innerHTML += `
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>${item.name} x ${item.quantity}</span>
+                        <span>₹${itemTotal}</span>
+                    </div>
+                `;
+            });
+
+            // Update totals
+            const shipping = 50;
+            const tax = subtotal * 0.1; // 10% tax
+            const total = subtotal + shipping + tax;
+
+            document.querySelector('.order-totals').innerHTML = `
+                <div class="d-flex justify-content-between mb-2">
+                    <span>Subtotal</span>
+                    <span>₹${subtotal}</span>
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                    <span>Shipping</span>
+                    <span>₹${shipping}</span>
+                </div>
+                <div class="d-flex justify-content-between mb-2">
+                    <span>Tax</span>
+                    <span>₹${tax.toFixed(2)}</span>
+                </div>
+                <hr>
+                <div class="d-flex justify-content-between mb-4">
+                    <strong>Total</strong>
+                    <strong>₹${total.toFixed(2)}</strong>
+                </div>
+            `;
+
+            // Update cart count in navbar (total quantity)
+            const cartCount = document.querySelector('.btn.btn-outline-primary .badge, .badge.bg-danger');
+            if (cartCount) {
+                cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+            }
+        }
+
+        function updateQuantity(index, change, newValue) {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            if (cart[index]) {
+                if (newValue !== undefined) {
+                    cart[index].quantity = parseInt(newValue);
+                } else {
+                    cart[index].quantity += change;
+                }
+                
+                if (cart[index].quantity < 1) {
+                    cart[index].quantity = 1;
+                }
+                
+                localStorage.setItem('cart', JSON.stringify(cart));
+                loadCart();
+            }
+        }
+
+        function removeItem(index) {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            loadCart();
+        }
+
+        function clearCart() {
+            if (confirm('Are you sure you want to clear your cart?')) {
+                localStorage.removeItem('cart');
+                loadCart();
+            }
+        }
+
+        function proceedToCheckout() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            if (cart.length === 0) {
+                alert('Your cart is empty!');
+                return;
+            }
+            window.location.href = 'checkout.html';
+        }
+
+        // Load cart when page loads
+        document.addEventListener('DOMContentLoaded', loadCart);
+    </script>
+
+    <!-- Navbar User Logic -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const user = JSON.parse(localStorage.getItem('user'));
+            // Find Account dropdown, Login, and Sign Up buttons
+            const accountDropdown = document.getElementById('accountDropdown');
+            const loginBtn = document.querySelector('a.btn.btn-outline-primary[href="login.html"]');
+            const signupBtn = document.querySelector('a.btn.btn-primary[href="signup.html"]');
+            if (user) {
+                // Show Account dropdown with user name
+                if (accountDropdown) {
+                    accountDropdown.innerHTML = `<i class='fas fa-user me-1'></i> ${user.firstName || ''} ${user.lastName || ''}`;
+                    accountDropdown.parentElement.style.display = 'block';
+                }
+                // Hide Login and Sign Up buttons
+                if (loginBtn) loginBtn.style.display = 'none';
+                if (signupBtn) signupBtn.style.display = 'none';
+            } else {
+                // Hide Account dropdown if not logged in
+                if (accountDropdown) accountDropdown.parentElement.style.display = 'none';
+                if (loginBtn) loginBtn.style.display = '';
+                if (signupBtn) signupBtn.style.display = '';
+            }
+        });
+    </script>
+</body>
+</html> 

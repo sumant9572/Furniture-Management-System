@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders - Furniture House Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="index.html">
+                    <i class="fas fa-couch me-2"></i>
+                    <span>Furniture House</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="inventory.html">Inventory</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="orders.html">
+                                Orders
+                                <span class="badge bg-primary rounded-pill ms-1" id="orderCountNav">0</span>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="d-flex gap-2 align-items-center">
+                        <div class="dropdown me-3">
+                            <button class="btn btn-link text-dark position-relative" type="button" id="accountDropdown">
+                                <i class="fas fa-user me-1"></i>
+                            </button>
+                        </div>
+                        <a href="login.html" class="btn btn-outline-primary">Login</a>
+                        <a href="signup.html" class="btn btn-primary">Sign Up</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="container py-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="section-title mb-0">Order Management</h2>
+                <a href="create-order.html" class="btn btn-primary">
+                    <i class="fas fa-plus me-2"></i>Create New Order
+                </a>
+            </div>
+
+            <!-- Order Stats -->
+            <div class="row g-4 mb-4">
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Total Orders</h3>
+                            <p class="stat-number">156</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Pending</h3>
+                            <p class="stat-number">23</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Shipped</h3>
+                            <p class="stat-number">45</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>Delivered</h3>
+                            <p class="stat-number">88</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="searchOrder" placeholder="Search orders...">
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex justify-content-md-end mt-3 mt-md-0">
+                                <select class="form-select" id="statusFilter" style="max-width: 200px;">
+                                    <option value="all">All Status</option>
+                                    <option value="Pending">Pending</option>
+                                    <option value="Processing">Processing</option>
+                                    <option value="Shipped">Shipped</option>
+                                    <option value="Delivered">Delivered</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Orders Table -->
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Date</th>
+                                    <th>Customer</th>
+                                    <th>Items</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ordersTableBody">
+                                <!-- Orders will be dynamically populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <nav class="mt-4">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1">Previous</a>
+                    </li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">Next</a>
+                    </li>
+                </ul>
+            </nav>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer mt-auto py-3 bg-dark text-white">
+            <div class="container text-center">
+                <p class="mb-0">&copy; 2024 Furniture House Management System. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Update the JavaScript section -->
+    <script>
+        // Load orders when page loads
+        document.addEventListener('DOMContentLoaded', loadOrders);
+
+        function loadOrders() {
+            const orders = JSON.parse(localStorage.getItem('orders')) || [];
+            const ordersTableBody = document.getElementById('ordersTableBody');
+            
+            // Clear existing orders
+            ordersTableBody.innerHTML = '';
+
+            // Add each order to the table
+            orders.forEach(order => {
+                const orderDate = new Date(order.orderDate);
+                const formattedDate = orderDate.toLocaleDateString();
+                const totalItems = order.items.reduce((sum, item) => sum + item.quantity, 0);
+                const totalAmount = order.items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                const shipping = 50;
+                const tax = totalAmount * 0.1;
+                const total = totalAmount + shipping + tax;
+
+                ordersTableBody.innerHTML += `
+                    <tr>
+                        <td>${order.orderNumber}</td>
+                        <td>${formattedDate}</td>
+                        <td>${order.shipping.firstName} ${order.shipping.lastName}</td>
+                        <td>${totalItems} items</td>
+                        <td>$${total.toFixed(2)}</td>
+                        <td><span class="badge bg-success">Completed</span></td>
+                        <td>
+                            <button class="btn btn-sm btn-outline-primary" onclick="viewOrderDetails('${order.orderNumber}')">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            });
+
+            // Update order statistics
+            updateOrderStats(orders);
+        }
+
+        function updateOrderStats(orders) {
+            const totalOrders = orders.length;
+            const totalRevenue = orders.reduce((sum, order) => {
+                const orderTotal = order.items.reduce((itemSum, item) => itemSum + (item.price * item.quantity), 0);
+                return sum + orderTotal + 50 + (orderTotal * 0.1); // Add shipping and tax
+            }, 0);
+
+            // Update statistics cards
+            document.querySelector('.stat-card:nth-child(1) .stat-value').textContent = totalOrders;
+            document.querySelector('.stat-card:nth-child(2) .stat-value').textContent = '$' + totalRevenue.toFixed(2);
+        }
+
+        function viewOrderDetails(orderNumber) {
+            const orders = JSON.parse(localStorage.getItem('orders')) || [];
+            const order = orders.find(o => o.orderNumber === orderNumber);
+            
+            if (order) {
+                // Create modal content
+                const modalContent = `
+                    <div class="modal-header">
+                        <h5 class="modal-title">Order Details - ${order.orderNumber}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <h6>Shipping Information</h6>
+                                <p class="mb-1">${order.shipping.firstName} ${order.shipping.lastName}</p>
+                                <p class="mb-1">${order.shipping.address}</p>
+                                <p class="mb-1">${order.shipping.city}, ${order.shipping.state} ${order.shipping.zipCode}</p>
+                                <p class="mb-1">${order.shipping.email}</p>
+                                <p class="mb-0">${order.shipping.phone}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <h6>Order Summary</h6>
+                                <div class="table-responsive">
+                                    <table class="table table-sm">
+                                        <thead>
+                                            <tr>
+                                                <th>Item</th>
+                                                <th>Quantity</th>
+                                                <th>Price</th>
+                                                <th>Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            ${order.items.map(item => `
+                                                <tr>
+                                                    <td>${item.name}</td>
+                                                    <td>${item.quantity}</td>
+                                                    <td>$${item.price}</td>
+                                                    <td>$${(item.price * item.quantity).toFixed(2)}</td>
+                                                </tr>
+                                            `).join('')}
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="3" class="text-end"><strong>Subtotal:</strong></td>
+                                                <td>$${order.items.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2)}</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" class="text-end"><strong>Shipping:</strong></td>
+                                                <td>$50.00</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" class="text-end"><strong>Tax:</strong></td>
+                                                <td>$${(order.items.reduce((sum, item) => sum + (item.price * item.quantity), 0) * 0.1).toFixed(2)}</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" class="text-end"><strong>Total:</strong></td>
+                                                <td>$${(order.items.reduce((sum, item) => sum + (item.price * item.quantity), 0) + 50 + (order.items.reduce((sum, item) => sum + (item.price * item.quantity), 0) * 0.1)).toFixed(2)}</td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="printOrder('${order.orderNumber}')">
+                            <i class="fas fa-print me-2"></i>Print Order
+                        </button>
+                    </div>
+                `;
+
+                // Create and show modal
+                const modal = new bootstrap.Modal(document.getElementById('orderModal'));
+                document.querySelector('#orderModal .modal-content').innerHTML = modalContent;
+                modal.show();
+            }
+        }
+
+        function printOrder(orderNumber) {
+            const orders = JSON.parse(localStorage.getItem('orders')) || [];
+            const order = orders.find(o => o.orderNumber === orderNumber);
+            
+            if (order) {
+                const printWindow = window.open('', '_blank');
+                printWindow.document.write(`
+                    <html>
+                    <head>
+                        <title>Order ${order.orderNumber}</title>
+                        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+                        <style>
+                            body { padding: 20px; }
+                            .header { text-align: center; margin-bottom: 30px; }
+                            .footer { margin-top: 50px; text-align: center; }
+                        </style>
+                    </head>
+                    <body>
+                        <div class="header">
+                            <h1>Furniture House</h1>
+                            <h2>Order Receipt</h2>
+                            <p>Order Number: ${order.orderNumber}</p>
+                            <p>Date: ${new Date(order.orderDate).toLocaleDateString()}</p>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4>Shipping Information</h4>
+                                <p>${order.shipping.firstName} ${order.shipping.lastName}</p>
+                                <p>${order.shipping.address}</p>
+                                <p>${order.shipping.city}, ${order.shipping.state} ${order.shipping.zipCode}</p>
+                                <p>${order.shipping.email}</p>
+                                <p>${order.shipping.phone}</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-4">
+                            <h4>Order Summary</h4>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Item</th>
+                                        <th>Quantity</th>
+                                        <th>Price</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    ${order.items.map(item => `
+                                        <tr>
+                                            <td>${item.name}</td>
+                                            <td>${item.quantity}</td>
+                                            <td>$${item.price}</td>
+                                            <td>$${(item.price * item.quantity).toFixed(2)}</td>
+                                        </tr>
+                                    `).join('')}
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="3" class="text-end"><strong>Subtotal:</strong></td>
+                                        <td>$${order.items.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2)}</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" class="text-end"><strong>Shipping:</strong></td>
+                                        <td>$50.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" class="text-end"><strong>Tax:</strong></td>
+                                        <td>$${(order.items.reduce((sum, item) => sum + (item.price * item.quantity), 0) * 0.1).toFixed(2)}</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3" class="text-end"><strong>Total:</strong></td>
+                                        <td>$${(order.items.reduce((sum, item) => sum + (item.price * item.quantity), 0) + 50 + (order.items.reduce((sum, item) => sum + (item.price * item.quantity), 0) * 0.1)).toFixed(2)}</td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+
+                        <div class="footer">
+                            <p>Thank you for your business!</p>
+                            <p>Furniture House - Your one-stop solution for all furniture needs</p>
+                        </div>
+                    </body>
+                    </html>
+                `);
+                printWindow.document.close();
+                printWindow.print();
+            }
+        }
+
+        // Navbar User Logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const user = JSON.parse(localStorage.getItem('user'));
+            // Find Account dropdown, Login, and Sign Up buttons
+            const accountDropdown = document.getElementById('accountDropdown');
+            const loginBtn = document.querySelector('a.btn.btn-outline-primary[href="login.html"]');
+            const signupBtn = document.querySelector('a.btn.btn-primary[href="signup.html"]');
+            if (user) {
+                // Show Account dropdown with user name
+                if (accountDropdown) {
+                    accountDropdown.innerHTML = `<i class='fas fa-user me-1'></i> ${user.firstName || ''} ${user.lastName || ''}`;
+                    accountDropdown.parentElement.style.display = 'block';
+                }
+                // Hide Login and Sign Up buttons
+                if (loginBtn) loginBtn.style.display = 'none';
+                if (signupBtn) signupBtn.style.display = 'none';
+            } else {
+                // Hide Account dropdown if not logged in
+                if (accountDropdown) accountDropdown.parentElement.style.display = 'none';
+                if (loginBtn) loginBtn.style.display = '';
+                if (signupBtn) signupBtn.style.display = '';
+            }
+        });
+
+        // Function to display orders
+        function displayOrders() {
+            const ordersList = document.getElementById('ordersTableBody');
+            const orders = JSON.parse(localStorage.getItem('orders')) || [];
+            
+            if (orders.length === 0) {
+                ordersList.innerHTML = `
+                    <div class="alert alert-info">
+                        No orders found. Start shopping to place your first order!
+                    </div>
+                `;
+                return;
+            }
+
+            ordersList.innerHTML = orders.map(order => `
+                <tr>
+                    <td>${order.orderNumber}</td>
+                    <td>${new Date(order.orderDate).toLocaleDateString()}</td>
+                    <td>${order.shipping.firstName} ${order.shipping.lastName}</td>
+                    <td>${order.items.reduce((sum, item) => sum + item.quantity, 0)} items</td>
+                    <td>$${order.items.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2)}</td>
+                    <td><span class="badge bg-${getStatusColor(order.status)}">${order.status}</span></td>
+                    <td>
+                        <button class="btn btn-sm btn-outline-primary" onclick="viewOrderDetails('${order.orderNumber}')">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        // Function to get status color
+        function getStatusColor(status) {
+            switch(status.toLowerCase()) {
+                case 'pending':
+                    return 'warning';
+                case 'processing':
+                    return 'info';
+                case 'shipped':
+                    return 'primary';
+                case 'delivered':
+                    return 'success';
+                default:
+                    return 'secondary';
+            }
+        }
+
+        // Function to update orders count
+        function updateOrdersCount() {
+            const orders = JSON.parse(localStorage.getItem('orders')) || [];
+            const orderCountNav = document.getElementById('orderCountNav');
+            if (orderCountNav) {
+                orderCountNav.textContent = orders.length;
+            }
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            displayOrders();
+            updateOrdersCount();
+
+            // Search functionality
+            document.getElementById('searchOrder').addEventListener('input', function(e) {
+                const searchTerm = e.target.value.toLowerCase();
+                const orders = JSON.parse(localStorage.getItem('orders')) || [];
+                const filteredOrders = orders.filter(order => 
+                    order.orderNumber.toLowerCase().includes(searchTerm) ||
+                    order.shipping.firstName.toLowerCase().includes(searchTerm) ||
+                    order.shipping.lastName.toLowerCase().includes(searchTerm)
+                );
+                displayFilteredOrders(filteredOrders);
+            });
+
+            // Status filter
+            document.getElementById('statusFilter').addEventListener('change', function(e) {
+                const status = e.target.value;
+                const orders = JSON.parse(localStorage.getItem('orders')) || [];
+                const filteredOrders = status === 'all' 
+                    ? orders 
+                    : orders.filter(order => order.status === status);
+                displayFilteredOrders(filteredOrders);
+            });
+        });
+
+        // Function to display filtered orders
+        function displayFilteredOrders(orders) {
+            const ordersList = document.getElementById('ordersTableBody');
+            
+            if (orders.length === 0) {
+                ordersList.innerHTML = `
+                    <div class="alert alert-info">
+                        No orders found matching your criteria.
+                    </div>
+                `;
+                return;
+            }
+
+            // Reuse the same display logic as displayOrders()
+            ordersList.innerHTML = orders.map(order => `
+                <tr>
+                    <td>${order.orderNumber}</td>
+                    <td>${new Date(order.orderDate).toLocaleDateString()}</td>
+                    <td>${order.shipping.firstName} ${order.shipping.lastName}</td>
+                    <td>${order.items.reduce((sum, item) => sum + item.quantity, 0)} items</td>
+                    <td>$${order.items.reduce((sum, item) => sum + (item.price * item.quantity), 0).toFixed(2)}</td>
+                    <td><span class="badge bg-${getStatusColor(order.status)}">${order.status}</span></td>
+                    <td>
+                        <button class="btn btn-sm btn-outline-primary" onclick="viewOrderDetails('${order.orderNumber}')">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+    </script>
+
+    <!-- Add Modal -->
+    <div class="modal fade" id="orderModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <!-- Modal content will be dynamically populated -->
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
