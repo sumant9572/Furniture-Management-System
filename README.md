@@ -14,7 +14,7 @@ npm install
 npm start
 ```
 
-Open `http://localhost:3000` in a browser.
+Open `[http://localhost:3000](https://sumant9572.github.io/Furniture-Management-System/)` in a browser.
 
 ## Project structure
 
