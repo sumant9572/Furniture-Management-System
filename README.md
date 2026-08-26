@@ -14,7 +14,9 @@ npm install
 npm start
 ```
 
-[Visit GitHub]([https://github.com](https://sumant9572.github.io/Furniture-Management-System/))
+[Live Demo](https://sumant9572.github.io/Furniture-Management-System/)
+
+
 ## Project structure
 
 - HTML pages provide authentication, products, inventory, orders, cart, and checkout views.
